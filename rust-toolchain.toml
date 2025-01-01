@@ -1,0 +1,15 @@
+[toolchain]
+channel = "nightly-2024-12-16"
+components = [
+	"cargo",
+	"clippy",
+	"rust-analyzer",
+	"rust-docs",
+	"rust-src",      # for rust-analyzer
+	"rustc",
+	"rustfmt",
+]
+targets = [
+	# Web Assembly
+	"wasm32-unknown-unknown"
+]
