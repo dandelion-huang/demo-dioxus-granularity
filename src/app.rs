@@ -8,18 +8,18 @@ pub fn App() -> Element {
 	let mut count = use_signal(|| 0);
 
 	rsx! {
-	  document::Title { "Demo Dioxus Granularity" }
-	  document::Link { rel: "stylesheet", href: TAILWIND_CSS }
-	  div { class: "flex justify-center items-center bg-black h-dvh",
-		BgContainer { class_name: Some("p-16 text-center"), count,
-		  BgContainer { class_name: Some("p-16 text-center"), count }
+		document::Title { "Demo Dioxus Granularity" }
+		document::Link { rel: "stylesheet", href: TAILWIND_CSS }
+		div { class: "flex justify-center items-center bg-black h-dvh",
+			BgContainer { class_name: Some("p-16 text-center"), count,
+				BgContainer { class_name: Some("p-16 text-center"), count }
+			}
+			button {
+				class: "py-2 px-4 bg-white rounded-md",
+				onclick: move |_| count += 1,
+				"Click me"
+			}
 		}
-		button {
-		  class: "py-2 px-4 bg-white rounded-md",
-		  onclick: move |_| count += 1,
-		  "Click me"
-		}
-	  }
 	}
 }
 
@@ -52,9 +52,9 @@ pub fn BgContainer(
 	count: Signal<i32>,
 ) -> Element {
 	rsx! {
-	  div { class: format!("{} {}", class_name.unwrap_or(""), random_bg_color()),
-		p { class: "mb-0.5", "Count: {count}" }
-		{children}
-	  }
+		div { class: format!("{} {}", class_name.unwrap_or(""), random_bg_color()),
+			p { class: "mb-0.5", "Count: {count}" }
+			{children}
+		}
 	}
 }
